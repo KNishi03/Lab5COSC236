@@ -7,18 +7,24 @@ public class LibraryApp {
 	private static LibrarianController librarian =  new LibrarianController();
 	
 	// Some functions for the Assignment
-	private static void addMember(String name) {
-		librarian.addMember(name);
-	}	
-	private static void addBook(String title) {
-		librarian.addBook(title);
+private static void addMember(String name) {
+	librarian.addMember(name);
+}	
+private static void addPaperBook(String title) {
+	librarian.addPaperBook(title); 
 	}
-	private static void borrowBook(String title, String name) {
-		librarian.borrowBookByMember(title, name);
+private static void addEBook(String title) { 
+	librarian.addEBook(title);
+	} 
+private static void addAudioBook(String title) {
+	librarian.addAudioBook(title); 
 	}
-	private static void returnBook(String title, String name) {
-		librarian.returnBookByMember(title, name);
-	}
+private static void borrowBook(String title, String name) {
+	librarian.borrowBookByMember(title, name);
+}
+private static void returnBook(String title, String name) {
+	librarian.returnBookByMember(title, name);
+}
 		
 	public static void main(String[] args) {
 						 	
