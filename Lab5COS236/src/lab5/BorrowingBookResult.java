@@ -15,7 +15,5 @@ public class BorrowingBookResult{
 	
 	// Getters and setters
 	// TODO implement getters and setters 
-	}
-
 
 }
