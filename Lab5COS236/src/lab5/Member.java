@@ -7,10 +7,11 @@ public class Member {
 
 	private String name;
 	private ArrayList<Book> borrowedBooks; // Book class dependency
-
-	public Member(String name) {
+	private final BorrowingService borrowingService;
+	public Member(String name, BorrowingService borrowingService) {
 		this.name = name;
 		this.borrowedBooks = new ArrayList<>();
+		this.borrowingService = borrowingService;
 	}
 
 	public String getName() {
@@ -55,7 +56,9 @@ public class Member {
 		for (Book book : borrowedBooks)
 			System.out.println(book); // book.toString()
 	}
-
+	public BorrowingService getBorrowingService() {
+		return borrowingService;
+	}
 	public int borrowedBooksCount() {
 		return borrowedBooks.size();
 	}

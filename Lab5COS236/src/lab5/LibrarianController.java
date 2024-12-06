@@ -3,7 +3,8 @@ package lab5;
 public class LibrarianController {
 	
 	Library library; // Library dependency
-	
+
+	private final BorrowingService borrowingService;
 	public LibrarianController( ) {
 		this.library = new Library(); // Constructor injection
 	}
@@ -34,6 +35,13 @@ public class LibrarianController {
 	}
 	public void removeMember(String name) {
 		library.removeMember(name);
+	}
+	public LibrarianController(Library library) {
+		this.library = library;
+		this.borrowingService = BorrowingService.getInstance();
+	}
+	public void addMember(String name) {
+		library.addMember(new Member(name, borrowingService));
 	}
 	public void showMember(String name) {
 		Member member = library.findMemberByName(name);
