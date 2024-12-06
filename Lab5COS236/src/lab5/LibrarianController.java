@@ -82,4 +82,19 @@ public class LibrarianController {
 		else  	
 			System.out.println("Either book " + title + " or member " + name + " not found.");
 	}
+	public void addBook(BookFactory bFactory, String title){
+		library.addBook(bFactory.createBook(title));
+	}
+	public void addEBook(String title){
+		EBookFactory eBookFactory= new EBookFactory();
+		library.addBook(eBookFactory.createBook(title));
+	}
+	public void addAudioBook(String title){
+		AudioBookFactory audioBookFactory= new AudioBookFactory();
+		library.addBook(audioBookFactory.createBook(title));
+	}
+	public void addPaperBook(String title){
+		PaperBookFactory paperBookFactory= new PaperBookFactory();
+		library.addBook(paperBookFactory.createBook(title));
+	}
 }
