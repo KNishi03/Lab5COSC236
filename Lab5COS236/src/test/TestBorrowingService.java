@@ -90,4 +90,29 @@ public class TestBorrowingService {
         assertTrue(audiobook.getIsAvailable());
         assertEquals(0, member.getBorrowedBooks().size());
     }
+    
+    @Test
+    public void testBorrowingLimit() {
+    	Library library = new Library();
+    	PaperBook book1 = new PaperBook("Dune");
+    	PaperBook book2 = new PaperBook("Wild");
+    	PaperBook book3 = new PaperBook ("Verity");
+    	PaperBook book4 = new PaperBook("Twilight");
+    	library.addBook(book1);
+    	library.addBook(book2);
+    	library.addBook(book3);
+    	library.addBook(book4);
+    	
+    	Member member = new Member("Charlie");
+        library.addMember(member);
+        
+        BorrowingServiceAPI borrowingService = BorrowingService.getInstance();
+        
+        assertTrue(borrowingService.borrowBook(member, book1).isSuccess());
+        assertTrue(borrowingService.borrowBook(member, book2).isSuccess());
+        assertTrue(borrowingService.borrowBook(member, book3).isSuccess());
+        BorrowingBookResult borrowResult = borrowingService.borrowBook(member, book4);
+        assertFalse(borrowResult.isSuccess());
+        assertEquals("Borrowing limit reached.", borrowingResult.getBorrowingMessage());
+    }
 }
