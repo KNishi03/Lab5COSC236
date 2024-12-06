@@ -25,12 +25,16 @@ public class TestBorrowingService {
         BorrowingServiceAPI borrowingService = new BorrowingService();
 
         // Borrow book
-        assertTrue(borrowingService.borrowBook(member, book));
+        BorrowingBookResult borrowResult = borrowingService.borrowBook(member, book);
+        assertTrue(borrowResult.isSuccessful());
+        //assertTrue(borrowingService.borrowBook(member, book));
         assertFalse(book.getIsAvailable());
         assertEquals(1, member.getBorrowedBooks().size());
 
         // Return book
-        assertTrue(borrowingService.returnBook(member, book));
+        BorrowingBookResult returnResult = borrowingService.returnBook(member, book);
+        assertTrue(returnResult.isSuccessful());
+        //assertTrue(borrowingService.returnBook(member, book));
         assertTrue(book.getIsAvailable());
         assertEquals(0, member.getBorrowedBooks().size());
     }
@@ -47,12 +51,16 @@ public class TestBorrowingService {
         BorrowingServiceAPI borrowingService = new BorrowingService();
 
         // Borrow eBook
-        assertTrue(borrowingService.borrowBook(member, ebook));
+        BorrowingBookResult borrowResult = borrowingService.borrowBook(member, ebook);
+        assertTrue(borrowResult.isSuccessful());
+        //assertTrue(borrowingService.borrowBook(member, ebook));
         assertFalse(ebook.getIsAvailable());
         assertEquals(1, member.getBorrowedBooks().size());
 
         // Return eBook
-        assertTrue(borrowingService.returnBook(member, ebook));
+        BorrowingBookResult returnResult = borrowingService.returnBook(member, ebook);
+        assertTrue(returnResult.isSuccessful());
+        //assertTrue(borrowingService.returnBook(member, ebook));
         assertTrue(ebook.getIsAvailable());
         assertEquals(0, member.getBorrowedBooks().size());
     }
@@ -69,12 +77,16 @@ public class TestBorrowingService {
         BorrowingServiceAPI borrowingService = new BorrowingService();
 
         // Borrow audio book
-        assertTrue(borrowingService.borrowBook(member, audiobook));
+        BorrowingBookResult borrowResult = borrowingService.borrowBook(member, audiobook);
+        assertTrue(borrowResult.isSuccessful());
+        //assertTrue(borrowingService.borrowBook(member, audiobook));
         assertFalse(audiobook.getIsAvailable());
         assertEquals(1, member.getBorrowedBooks().size());
 
         // Return audio book
-        assertTrue(borrowingService.returnBook(member, audiobook));
+        BorrowingBookResult returnResult = borrowingService.returnBook(member, audiobook);
+        assertTrue(returnResult.isSuccessful());
+        //assertTrue(borrowingService.returnBook(member, audiobook));
         assertTrue(audiobook.getIsAvailable());
         assertEquals(0, member.getBorrowedBooks().size());
     }
