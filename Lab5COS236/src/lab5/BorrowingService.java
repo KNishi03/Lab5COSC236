@@ -19,23 +19,19 @@ public class BorrowingService implements BorrowingServiceAPI {
     }
 
     @Override
-    public boolean borrowBook(Member member, Book book) {
+    public BorrowingBookResult borrowBook(Member member, Book book) {
         if (member.getBorrowedItems().size() < borrowingLimit) {
             member.getBorrowedItems().add(book);
-            System.out.println("Book borrowed successfully!");
-            return true;
+            return new BorrowingBookResult(true, "Book borrowed successfully!");
         }
-        System.out.println("Borrowing limit reached.");
-        return false;
+        return new BorrowingBookResult(false, "Borrowing limit reached.");
     }
 
     @Override
-    public boolean returnBook(Member member, Book book) {
+    public BorrowingBookResult returnBook(Member member, Book book) {
         if (member.getBorrowedItems().remove(book)) {
-            System.out.println("Book returned successfully!");
-            return true;
+            return new BorrowingBookResult(true, "Book returned successfully!");
         }
-        System.out.println("Book not found in borrowed items.");
-        return false;
+        return new BorrowingBookResult(false, "Book not found in borrowed items.");
     }
 }
